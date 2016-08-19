@@ -45,8 +45,6 @@ end
 end
 
 get '/newpage' do
-    # print "Here are all the options you could've had:"
-    # @all_messages = birth_path_explanation[1,2,3,4,5,6,7,8,9]
     erb :newpage
 end
 
