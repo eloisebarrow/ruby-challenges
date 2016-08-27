@@ -48,27 +48,32 @@ get '/' do
     erb :form
 end
 
-# post '/' do
-#     birthdate = params[:birthdate]
+post '/' do
+    birthdate = params[:birthdate]
+    if valid_birthdate(birthdate)
+        birth_path_number = birth_path(birthdate)
+        redirect "/message/#{birth_path_num}"
+    else
+        erb :form
+    end
+    # @message = birth_path_explanation(birth_path_number)
+    # erb :index
+end
+
+# def setup_index_view
+#     birthdate = params[:birthdate].gsub("-", "")
 #     birth_path_number = birth_path(birthdate)
 #     @message = birth_path_explanation(birth_path_number)
 #     erb :index
 # end
 
-def setup_index_view
-    birthdate = params[:birthdate]
-    birth_path_number = birth_path(birthdate)
-    @message = birth_path_explanation(birth_path_number)
-    erb :index
-end
+# get '/:birthdate' do
+#     setup_index_view
+# end
 
-get '/:birthdate' do
-    setup_index_view
-end
-
-post '/' do
-    setup_index_view
-end
+# post '/' do
+#     setup_index_view
+# end
 
 
 # get '/:birthdate' do
@@ -93,7 +98,9 @@ post '/' do
     redirect "/message/#{birth_path_num}"
 end
 
-
+def valid_birthdate(input)
+    return true
+end
 
 
 
